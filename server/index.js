@@ -6,13 +6,14 @@ import * as dotenv from 'dotenv'
 import cors from 'cors'
 
 // Import connectDB function from mongodb/connect.js
-// import connectDB from './mongodb/connect.js'
+import connectDB from './mongodb/connect.js'
 // Import postRoutes from routes/postRoutes.js
-// import postRoutes from './routes/postRoutes.js'
+import postRoutes from './routes/postRoutes.js'
 // Import dalleRoutes from routes/dalleRoutes.js
-// import dalleRoutes from './routes/dalleRoutes.js'
+import dalleRoutes from './routes/dalleRoutes.js'
 
 // Configure dotenv
+// allows us to pull our variables from the .env files
 dotenv.config()
 
 // Create an express app
@@ -22,9 +23,9 @@ app.use(cors()) // Use cors middleware
 app.use(express.json({ limit: '50mb' }))
 
 // Use postRoutes for requests to the /api/v1/post route
-// app.use('/api/v1/post', postRoutes)
+app.use('/api/v1/post', postRoutes)
 // Use dalleRoutes for requests to the /api/v1/dalle route
-// app.use('/api/v1/dalle', dalleRoutes)
+app.use('/api/v1/dalle', dalleRoutes)
 
 // Handle GET requests to the root route
 app.get('/', async (req, res) => {
@@ -37,7 +38,7 @@ app.get('/', async (req, res) => {
 const startServer = async () => {
   try {
     // Connect to MongoDB using the URL specified in the MONGODB_URL environment variable
-    // connectDB(process.env.MONGODB_URL)
+    connectDB(process.env.MONGODB_URL)
     // Start the server on port 8080 and log a message to the console
     app.listen(8080, () => console.log('Server started on port 8080'))
   } catch (error) {
