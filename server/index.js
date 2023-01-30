@@ -18,7 +18,19 @@ dotenv.config()
 
 // Create an express app
 const app = express()
-app.use(cors()) // Use cors middleware
+// ===========================
+// Use the cors middleware to allow requests from specified origins
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // Replace with the origin of your client
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow these request headers
+  })
+)
+// ====================
+
+// Use cors middleware
+// app.use(cors())
 // Use express.json middleware with a limit of 50mb
 app.use(express.json({ limit: '50mb' }))
 

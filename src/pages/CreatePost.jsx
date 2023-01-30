@@ -24,7 +24,7 @@ const CreatePost = () => {
     const randomPrompt = getRandomPrompt(form.prompt)
     setForm({ ...form, prompt: randomPrompt })
   }
-
+  // called from backend
   const generateImage = async () => {
     if (form.prompt) {
       try {
@@ -32,6 +32,7 @@ const CreatePost = () => {
         const response = await fetch(
           'https://dalle-arbb.onrender.com/api/v1/dalle',
           {
+            mode: 'no-cors',
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

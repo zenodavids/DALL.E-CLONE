@@ -1,3 +1,10 @@
+## Frontend
+
+```bash
+npm i
+npm run dev
+```
+
 ## For the backend
 
 ### in creating a new project;
@@ -42,3 +49,12 @@ npm start
 
 - go to https://www.mongodb.com/atlas/database
 - use the tutorial in https://www.youtube.com/watch?v=EyIvuigqDoA&t=426s from 1.07.23 - 1.10.31
+
+### .env
+
+create a .env in the server folder and fill up;
+
+```js
+OPENAI_API_KEY = ''
+MONGODB_URL = ''
+```
